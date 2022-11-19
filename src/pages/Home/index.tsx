@@ -14,7 +14,7 @@ const Home = () => {
         className='bg-[#fff] text-[#111] border-none py-2 px-4 text-2xl duration-300 ease-in-out transition-all hover:shadow-[0_0_11px_4px_#ffffff80] '
       >
         Logout
-      </button>
+      </button>  
     </div>
   );
 };
