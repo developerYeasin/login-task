@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 type Inputs = {
   email: string
@@ -16,19 +16,19 @@ interface dataType {
 }
 
 const SignUpForm = () => {
-  const [password, setPassword] = useState(true)
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [password, setPassword] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>()
+  } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data: dataType) => {
     // console.log(data)
-    setLoading(true)
+    setLoading(true);
     fetch('https://talk-a-tive-server.herokuapp.com/users', {
       method: 'POST',
       headers: {
@@ -39,21 +39,21 @@ const SignUpForm = () => {
       .then((res) => res.json())
       .then((resData) => {
         if (resData.message) {
-          toast.error('Failed to load the Chats')
-          setLoading(false)
+          toast.error('Failed to load the Chats');
+          setLoading(false);
         } else {
-          localStorage.setItem('userInfo', JSON.stringify(resData))
-          toast.success('Successfully login')
-          navigate('/')
-          setLoading(false)
+          localStorage.setItem('userInfo', JSON.stringify(resData));
+          toast.success('Successfully login');
+          navigate('/');
+          setLoading(false);
         }
       })
       .catch((err) => {
-        console.log(err)
-        toast.error('Failed to load the Chats')
-        setLoading(false)
-      })
-  }
+        console.log(err);
+        toast.error('Failed to load the Chats');
+        setLoading(false);
+      });
+  };
 
   return (
     <>
@@ -76,7 +76,7 @@ const SignUpForm = () => {
           />
           {errors.name && <span className='text-xs text-rose-700'>Username is required</span>}
         </div>
-        <div className='relative '>
+        <div className='relative mb-10 '>
           <input
             type={password ? 'password' : 'text'}
             className='border-b mt-2 border-solid border-[#fff] bg-transparent focus:outline-none active:outline-none text-base py-1 px-2 w-full text-white '
@@ -110,7 +110,7 @@ const SignUpForm = () => {
         )}
       </form>
     </>
-  )
-}
+  );
+};
 
-export default SignUpForm
+export default SignUpForm;

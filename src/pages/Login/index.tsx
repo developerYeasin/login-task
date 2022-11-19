@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import ForgetPasswordModal from '../../components/ForgetPasswordModal'
-import LoginForm from '../../components/LoginForm'
-import SignUpForm from '../../components/SignUpForm'
+import React, { useState } from 'react';
+import ForgetPasswordModal from '../../components/ForgetPasswordModal';
+import LoginForm from '../../components/LoginForm';
+import SignUpForm from '../../components/SignUpForm';
 
 const Login = () => {
-  const [form, setFrom] = useState(true)
-  const [forgetPassword, setForgetPassword] = useState(false)
+  const [form, setFrom] = useState(true);
+  const [forgetPassword, setForgetPassword] = useState(false);
 
   return (
     <div className=' relative h-screen w-full bg-gradient-to-b from-[#1F2A3B] to-[#337E7B]'>
@@ -39,7 +39,7 @@ const Login = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

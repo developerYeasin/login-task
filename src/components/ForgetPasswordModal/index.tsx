@@ -1,5 +1,5 @@
-import React from 'react'
-import { MdClose } from 'react-icons/md'
+import React from 'react';
+import { MdClose } from 'react-icons/md';
 interface props {
   forgetPassword: boolean
   setForgetPassword: (e: boolean) => void
@@ -39,7 +39,7 @@ const ForgetPasswordModal = ({ forgetPassword, setForgetPassword }: props) => {
         <p className='text-[10px] mt-4 '>An email has been sent to you with further instructions</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ForgetPasswordModal
+export default ForgetPasswordModal;

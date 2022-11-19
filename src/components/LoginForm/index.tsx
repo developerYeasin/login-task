@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { AiFillEye, AiFillEyeInvisible, AiOutlineArrowLeft } from 'react-icons/ai'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { AiFillEye, AiFillEyeInvisible, AiOutlineArrowLeft } from 'react-icons/ai';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 interface props {
   forgetPassword: boolean
@@ -21,20 +21,20 @@ interface dataType {
 }
 
 const LoginForm = ({ forgetPassword, setForgetPassword }: props) => {
-  const [password, setPassword] = useState(true)
-  const [select, setSelect] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const navigate = useNavigate()
+  const [password, setPassword] = useState(true);
+  const [select, setSelect] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>()
+  } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = (data: dataType) => {
     // console.log(data)
-    setLoading(true)
+    setLoading(true);
     fetch('https://talk-a-tive-server.herokuapp.com/users/login', {
       method: 'POST',
       headers: {
@@ -45,21 +45,21 @@ const LoginForm = ({ forgetPassword, setForgetPassword }: props) => {
       .then((res) => res.json())
       .then((resData) => {
         if (resData.message) {
-          toast.error('Failed to load the Chats')
-          setLoading(false)
+          toast.error('Failed to load the Chats');
+          setLoading(false);
         } else {
-          localStorage.setItem('userInfo', JSON.stringify(resData))
-          toast.success('Successfully login')
-          navigate('/')
-          setLoading(false)
+          localStorage.setItem('userInfo', JSON.stringify(resData));
+          toast.success('Successfully login');
+          navigate('/');
+          setLoading(false);
         }
       })
       .catch((err) => {
-        console.log(err)
-        toast.error('Failed to load the Chats')
-        setLoading(false)
-      })
-  }
+        console.log(err);
+        toast.error('Failed to load the Chats');
+        setLoading(false);
+      });
+  };
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className='mt-9 regForm '>
@@ -130,7 +130,7 @@ const LoginForm = ({ forgetPassword, setForgetPassword }: props) => {
         <AiOutlineArrowLeft className='mr-2' /> Forget your password
       </button>
     </>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;
